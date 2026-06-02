@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        
+        for(int i = 0; i < n; i++){
+            a[i] = sc.nextInt();
+        }
+        
+        int firstNum = a[0];
+        int minSum = 0;
+        while (firstNum > 0) {
+            minSum = minSum + (firstNum % 10);
+            firstNum = firstNum / 10;
+        }
+        
+        for (int i = 0; i < a.length; i++) {
+            int num = a[i];
+            int sum = 0;
+            while (num > 0) {
+                sum = sum + (num % 10); 
+                num = num / 10;
+            }
+            
+            System.out.println(a[i] + " has a digit sum of " + sum);
+            if (sum < minSum) {
+                minSum = sum;
+            }
+        }
+        
+        System.out.println("The minimum sum of digits is: " + minSum);
+    }
+}
